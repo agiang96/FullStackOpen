@@ -1,0 +1,17 @@
+title New Note Single Page App
+
+browser->server: HTTP POST .../new_note_spa
+server-->browser: 201 Created
+
+note over server:
+gets list, creates new element,adds 
+context to element, appends element to list
+end note
+
+browser->server: HTTP GET https://fullstack-exampleapp.herokuapp.com/data.json
+server-->browser: {content: "new element spa", date: "2019-08-08T18:23:57.126Z"}
+
+note over browser:
+browser executes event handler 
+and renders data to display
+end note
