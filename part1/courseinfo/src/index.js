@@ -2,27 +2,28 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 
 const App = () => {
-  const course = 'Half Stack application development'
-  const parts = [
-    {
-      name: 'Fundamentals of React',
-      exercises: 10
-    },
-    {
-      name: 'Using props to pass data',
-      exercises: 7
-    },
-    {
-      name: 'State of a component',
-      exercises: 14
-    }
-  ]
-  
+  const course = {
+    name: 'Half Stack application development',
+    parts: [
+      {
+        name: 'Fundamentals of React',
+        exercises: 10
+      },
+      {
+        name: 'Using props to pass data',
+        exercises: 7
+      },
+      {
+        name: 'State of a component',
+        exercises: 14
+      }
+    ]
+  }
   return (
     <div>
-      <Header course={course} />
-      <Content part={parts}/>
-      <Total exercises={parts}/>
+      <Header course={course.name} />
+      <Content part={course.parts}/>
+      <Total exercises={course.parts}/>
     </div>
   )
 }
@@ -36,8 +37,9 @@ const Header = (props) => {
   }
 
 // part.map( for each value of part, put the part component in partArr array)
+// needs index to fix "unique key" error to make sure the correct objects are passed
 const Content = (props) => {
-  const partArr = props.part.map( value => <Part part={value} /> )
+  const partArr = props.part.map( (value,index) => <Part part={value} key={index}/> )
     return (
       <>
         {partArr}
